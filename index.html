@@ -6,195 +6,89 @@
   <title>커넥팅 리뷰 자동 답변기</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #ffffff;
-      --bg2: #f7f7f5;
-      --text: #1a1a1a;
-      --text2: #6b6b6b;
-      --text3: #9a9a9a;
-      --border: rgba(0,0,0,0.12);
-      --border2: rgba(0,0,0,0.2);
-      --blue: #378ADD;
-      --blue-bg: #E6F1FB;
-      --blue-text: #185FA5;
-      --green: #1D9E75;
-      --green-bg: #E1F5EE;
-      --green-text: #085041;
-      --amber-bg: #FAEEDA;
-      --amber-border: #BA7517;
-      --red: #E24B4A;
-      --red-bg: #FCEBEB;
-      --red-text: #A32D2D;
-      --radius: 10px;
-      --radius-lg: 14px;
+      --bg: #ffffff; --bg2: #f7f7f5; --text: #1a1a1a; --text2: #6b6b6b; --text3: #9a9a9a;
+      --border: rgba(0,0,0,0.12); --border2: rgba(0,0,0,0.2);
+      --blue: #378ADD; --blue-bg: #E6F1FB; --blue-text: #185FA5;
+      --green: #1D9E75; --green-bg: #E1F5EE; --green-text: #085041;
+      --amber-bg: #FAEEDA; --amber-border: #BA7517;
+      --red: #E24B4A; --red-bg: #FCEBEB; --red-text: #A32D2D;
+      --purple-bg: #EEEDFE; --purple-text: #3C3489;
+      --radius: 10px; --radius-lg: 14px;
     }
-
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #1e1e1e;
-        --bg2: #2a2a2a;
-        --text: #f0f0f0;
-        --text2: #9a9a9a;
-        --text3: #666666;
-        --border: rgba(255,255,255,0.1);
-        --border2: rgba(255,255,255,0.2);
-        --blue-bg: #0c2d4a;
-        --blue-text: #85B7EB;
-        --green-bg: #0a2e22;
-        --green-text: #5DCAA5;
-        --amber-bg: #2a1f0a;
-        --amber-border: #EF9F27;
-        --red-bg: #2a0f0f;
-        --red-text: #F09595;
+        --bg: #1e1e1e; --bg2: #2a2a2a; --text: #f0f0f0; --text2: #9a9a9a; --text3: #666666;
+        --border: rgba(255,255,255,0.1); --border2: rgba(255,255,255,0.2);
+        --blue-bg: #0c2d4a; --blue-text: #85B7EB;
+        --green-bg: #0a2e22; --green-text: #5DCAA5;
+        --amber-bg: #2a1f0a; --amber-border: #EF9F27;
+        --red-bg: #2a0f0f; --red-text: #F09595;
+        --purple-bg: #1a1940; --purple-text: #AFA9EC;
       }
     }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      padding: 2rem 1rem;
-      line-height: 1.6;
-    }
-
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Apple SD Gothic Neo', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
     .container { max-width: 680px; margin: 0 auto; }
-
     .header { margin-bottom: 2rem; }
-    .app-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 5px 12px;
-      background: var(--bg2); border: 0.5px solid var(--border);
-      border-radius: 20px; font-size: 12px; color: var(--text2); margin-bottom: 10px;
-    }
+    .app-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; background: var(--bg2); border: 0.5px solid var(--border); border-radius: 20px; font-size: 12px; color: var(--text2); margin-bottom: 10px; }
     .app-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
     h1 { font-size: 22px; font-weight: 600; margin-bottom: 5px; }
     .subtitle { font-size: 14px; color: var(--text2); }
-
-
-
-    .card {
-      background: var(--bg); border: 0.5px solid var(--border);
-      border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem;
-    }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
     .card-title { font-size: 13px; font-weight: 500; color: var(--text2); margin-bottom: 10px; }
-
-    .plat-btns { display: flex; gap: 8px; }
-    .plat-btn {
-      flex: 1; padding: 10px 8px;
-      border: 0.5px solid var(--border2); border-radius: var(--radius);
-      background: var(--bg); color: var(--text2); font-size: 13px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.15s;
-    }
-    .plat-btn.active { border: 1.5px solid var(--blue); color: var(--blue-text); background: var(--blue-bg); }
-
-    .limit-badge {
-      display: inline-flex; align-items: center;
-      padding: 3px 10px; border-radius: 20px; font-size: 12px;
-      background: var(--bg2); color: var(--text2); border: 0.5px solid var(--border);
-    }
-
-    .star-row { display: flex; gap: 6px; }
-    .star-btn {
-      flex: 1; height: 40px;
-      border: 0.5px solid var(--border); border-radius: var(--radius);
-      background: var(--bg2); color: var(--text); font-size: 13px; cursor: pointer; transition: all 0.15s;
-    }
-    .star-btn.active { background: var(--amber-bg); border-color: var(--amber-border); font-weight: 500; }
-
-    .nick-input {
-      width: 100%; padding: 9px 12px; font-size: 14px;
-      background: var(--bg); color: var(--text);
-      border: 0.5px solid var(--border2); border-radius: var(--radius); font-family: inherit;
-    }
+    .btn-grid-2 { display: flex; gap: 8px; }
+    .btn-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .sel-btn { padding: 10px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius); background: var(--bg); color: var(--text2); font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.15s; }
+    .sel-btn.active-blue { border: 1.5px solid var(--blue); color: var(--blue-text); background: var(--blue-bg); }
+    .sel-btn.active-purple { border: 1.5px solid #534AB7; color: var(--purple-text); background: var(--purple-bg); }
+    .sel-btn.active-amber { background: var(--amber-bg); border-color: var(--amber-border); font-weight: 500; }
+    .sel-btn.active-green { border-color: var(--green); color: var(--green-text); background: var(--green-bg); }
+    .limit-badge { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 20px; font-size: 12px; background: var(--bg2); color: var(--text2); border: 0.5px solid var(--border); }
+    .nick-input { width: 100%; padding: 9px 12px; font-size: 14px; background: var(--bg); color: var(--text); border: 0.5px solid var(--border2); border-radius: var(--radius); font-family: inherit; }
     .nick-input:focus { outline: none; border-color: var(--blue); }
-
-    .fixed-preview {
-      background: var(--bg2); border: 0.5px solid var(--border);
-      border-radius: var(--radius); padding: 12px 14px;
-      font-size: 13px; color: var(--text2); line-height: 1.8;
-    }
+    .fixed-preview { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px 14px; font-size: 13px; color: var(--text2); line-height: 1.8; }
     .fp-row { display: flex; align-items: flex-start; gap: 8px; }
     .fp-row + .fp-row { margin-top: 8px; }
     .fp-divider { border: none; border-top: 0.5px dashed var(--border2); margin: 10px 0; }
     .fp-ai { font-size: 12px; color: var(--text3); font-style: italic; padding: 2px 0; }
-    .tag {
-      display: inline-block; font-size: 11px; padding: 2px 8px;
-      border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 2px;
-    }
-    .tag-open  { background: var(--blue-bg);  color: var(--blue-text); }
+    .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .tag-open { background: var(--blue-bg); color: var(--blue-text); }
     .tag-close { background: var(--green-bg); color: var(--green-text); }
     .tag-close-bad { background: var(--red-bg); color: var(--red-text); }
-
     .tone-btns { display: flex; gap: 8px; flex-wrap: wrap; }
-    .tone-btn {
-      padding: 7px 14px; border: 0.5px solid var(--border); border-radius: 20px;
-      background: var(--bg); color: var(--text2); font-size: 13px; cursor: pointer; transition: all 0.15s;
-    }
-    .tone-btn.active { border-color: var(--green); color: var(--green-text); background: var(--green-bg); }
-
-    textarea {
-      width: 100%; min-height: 110px; padding: 10px 12px; font-size: 14px;
-      background: var(--bg); color: var(--text);
-      border: 0.5px solid var(--border2); border-radius: var(--radius);
-      resize: vertical; font-family: inherit; line-height: 1.6;
-    }
+    .tone-btn { padding: 7px 14px; border: 0.5px solid var(--border); border-radius: 20px; background: var(--bg); color: var(--text2); font-size: 13px; cursor: pointer; transition: all 0.15s; }
+    .tone-btn.active-green { border-color: var(--green); color: var(--green-text); background: var(--green-bg); }
+    textarea { width: 100%; min-height: 110px; padding: 10px 12px; font-size: 14px; background: var(--bg); color: var(--text); border: 0.5px solid var(--border2); border-radius: var(--radius); resize: vertical; font-family: inherit; line-height: 1.6; }
     textarea:focus { outline: none; border-color: var(--blue); }
-
-    .gen-btn {
-      width: 100%; padding: 13px; background: var(--text); color: var(--bg);
-      border: none; border-radius: var(--radius); font-size: 15px; font-weight: 500;
-      cursor: pointer; transition: opacity 0.15s; margin-top: 0.25rem;
-    }
+    .gen-btn { width: 100%; padding: 13px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius); font-size: 15px; font-weight: 500; cursor: pointer; transition: opacity 0.15s; margin-top: 0.25rem; }
     .gen-btn:disabled { opacity: 0.35; cursor: not-allowed; }
     .gen-btn:not(:disabled):hover { opacity: 0.85; }
-
-    .result-box {
-      margin-top: 1.25rem; background: var(--bg2);
-      border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem;
-    }
-    .result-header {
-      display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
-    }
+    .result-box { margin-top: 1.25rem; background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+    .result-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
     .result-label { font-size: 13px; font-weight: 500; color: var(--text2); }
-
     .char-bar-wrap { margin-bottom: 14px; }
     .char-bar-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
     .char-num { font-size: 13px; font-weight: 500; }
-    .char-num.ok   { color: var(--green-text); }
-    .char-num.warn { color: #BA7517; }
-    .char-num.over { color: var(--red); }
+    .char-num.ok { color: var(--green-text); } .char-num.warn { color: #BA7517; } .char-num.over { color: var(--red); }
     .char-limit-label { font-size: 12px; color: var(--text3); }
     .bar-bg { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
     .bar-fill { height: 100%; border-radius: 2px; transition: width 0.3s, background 0.3s; }
-
-    .copy-btn {
-      padding: 5px 14px; border: 0.5px solid var(--border2); border-radius: var(--radius);
-      background: var(--bg); color: var(--text2); font-size: 12px; cursor: pointer;
-    }
+    .copy-btn { padding: 5px 14px; border: 0.5px solid var(--border2); border-radius: var(--radius); background: var(--bg); color: var(--text2); font-size: 12px; cursor: pointer; }
     .copy-btn.copied { color: var(--green-text); border-color: var(--green); background: var(--green-bg); }
-
     .result-part { margin-bottom: 10px; }
     .result-part:last-child { margin-bottom: 0; }
-    .part-tag {
-      font-size: 11px; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 4px;
-    }
+    .part-tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 4px; }
     .part-fixed { background: var(--bg2); color: var(--text3); border: 0.5px solid var(--border); }
-    .part-ai    { background: var(--blue-bg); color: var(--blue-text); }
+    .part-ai { background: var(--blue-bg); color: var(--blue-text); }
     .part-extra { background: var(--amber-bg); color: #633806; border: 0.5px solid var(--border); }
     .result-text { font-size: 14px; color: var(--text); line-height: 1.8; white-space: pre-wrap; }
     .divider { border: none; border-top: 0.5px solid var(--border); margin: 10px 0; }
     .error-text { font-size: 13px; color: var(--red); }
-
     .loading { display: flex; gap: 5px; align-items: center; padding: 4px 0; }
     .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text2); animation: bop 1s ease-in-out infinite; }
-    .dot:nth-child(2) { animation-delay: 0.15s; }
-    .dot:nth-child(3) { animation-delay: 0.3s; }
+    .dot:nth-child(2) { animation-delay: 0.15s; } .dot:nth-child(3) { animation-delay: 0.3s; }
     @keyframes bop { 0%,100%{ opacity:0.3; transform:translateY(0); } 50%{ opacity:1; transform:translateY(-5px); } }
-
     .footer { margin-top: 2rem; font-size: 12px; color: var(--text3); text-align: center; line-height: 1.8; }
-    .footer a { color: var(--blue-text); text-decoration: none; }
   </style>
 </head>
 <body>
@@ -206,44 +100,50 @@
     <p class="subtitle">앱스토어 · 구글플레이 리뷰 답변을 AI가 작성해드립니다.</p>
   </div>
 
-
-
   <!-- 플랫폼 -->
   <div class="card">
     <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;">
       <span>플랫폼</span>
       <span id="limitBadge" class="limit-badge">최대 5,970자</span>
     </div>
-    <div class="plat-btns">
-      <button class="plat-btn active" data-plat="앱스토어" data-limit="5970" onclick="selPlat(this)">
+    <div class="btn-grid-2">
+      <button class="sel-btn active-blue" data-plat="앱스토어" onclick="selPlat(this)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         앱스토어
       </button>
-      <button class="plat-btn" data-plat="구글플레이" data-limit="350" onclick="selPlat(this)">
+      <button class="sel-btn" data-plat="구글플레이" onclick="selPlat(this)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5v-17c0-.83,1-.83,1.5-.5l13,8.5-13,8.5C4,20.33,3,20.33,3,20.5z"/></svg>
         구글플레이
       </button>
     </div>
   </div>
 
+  <!-- 언어 -->
+  <div class="card">
+    <div class="card-title">답변 언어</div>
+    <div class="btn-grid-4">
+      <button class="sel-btn active-purple" data-lang="ko" onclick="selLang(this)">한국어</button>
+      <button class="sel-btn" data-lang="ja" onclick="selLang(this)">日本語</button>
+      <button class="sel-btn" data-lang="en" onclick="selLang(this)">English</button>
+      <button class="sel-btn" data-lang="zh" onclick="selLang(this)">繁體中文</button>
+    </div>
+  </div>
+
   <!-- 별점 -->
   <div class="card">
     <div class="card-title">별점</div>
-    <div class="star-row">
-      <button class="star-btn" data-v="1" onclick="selStar(this)">★ 1</button>
-      <button class="star-btn" data-v="2" onclick="selStar(this)">★ 2</button>
-      <button class="star-btn" data-v="3" onclick="selStar(this)">★ 3</button>
-      <button class="star-btn" data-v="4" onclick="selStar(this)">★ 4</button>
-      <button class="star-btn active" data-v="5" onclick="selStar(this)">★ 5</button>
+    <div class="btn-grid-4" style="grid-template-columns:repeat(5,1fr)">
+      <button class="sel-btn" data-v="1" onclick="selStar(this)">★ 1</button>
+      <button class="sel-btn" data-v="2" onclick="selStar(this)">★ 2</button>
+      <button class="sel-btn" data-v="3" onclick="selStar(this)">★ 3</button>
+      <button class="sel-btn" data-v="4" onclick="selStar(this)">★ 4</button>
+      <button class="sel-btn active-amber" data-v="5" onclick="selStar(this)">★ 5</button>
     </div>
   </div>
 
   <!-- 닉네임 -->
   <div class="card">
-    <div class="card-title">
-      리뷰어 닉네임
-      <span style="font-weight:400;color:var(--text3);margin-left:4px">(비워두면 000으로 표시)</span>
-    </div>
+    <div class="card-title">리뷰어 닉네임 <span style="font-weight:400;color:var(--text3);margin-left:4px">(비워두면 기본값으로 표시)</span></div>
     <input class="nick-input" type="text" id="nickname" placeholder="예: 사과맛젤리" oninput="updatePreview()" />
   </div>
 
@@ -265,11 +165,11 @@
     </div>
   </div>
 
-  <!-- 톤 -->
+  <!-- 답변 톤 -->
   <div class="card">
     <div class="card-title">답변 톤</div>
     <div class="tone-btns">
-      <button class="tone-btn active" data-tone="공손하고 전문적인" onclick="selTone(this)">공손·전문적</button>
+      <button class="tone-btn active-green" data-tone="공손하고 전문적인" onclick="selTone(this)">공손·전문적</button>
       <button class="tone-btn" data-tone="친근하고 따뜻한" onclick="selTone(this)">친근·따뜻</button>
       <button class="tone-btn" data-tone="간결하고 명확한" onclick="selTone(this)">간결·명확</button>
       <button class="tone-btn" data-tone="진심으로 공감하는" onclick="selTone(this)">공감·사과</button>
@@ -290,7 +190,7 @@
       <span class="result-label">생성된 답변</span>
       <button class="copy-btn" id="copyBtn" onclick="copyText()">전체 복사</button>
     </div>
-    <div class="char-bar-wrap" id="charBarWrap">
+    <div class="char-bar-wrap">
       <div class="char-bar-top">
         <span class="char-num" id="charNum">0자</span>
         <span class="char-limit-label" id="charLimitLabel"></span>
@@ -300,33 +200,64 @@
     <div id="resultContent"></div>
   </div>
 
-  <div class="footer">
-    커넥팅 리뷰 자동 답변기 · Powered by Claude AI
-  </div>
-
+  <div class="footer">커넥팅 리뷰 자동 답변기 · Powered by Claude AI</div>
 </div>
+
 <script>
-  // ── 고정 상수 ──────────────────────────────────────────────
-  const OPEN_TPL   = '안녕하세요, {닉네임}님! 커넥팅입니다! 우선 소중한 리뷰 남겨주셔서 진심으로 감사드립니다.';
-  const CLOSE_GOOD = '오늘도 행복한 하루 보내시기 바랍니다😊 커넥팅 드림';
-  const CLOSE_BAD  = '감사합니다. 커넥팅 드림';
-  const INQUIRY    = '이용 중 궁금 사항이 생기시면 앱 내 문의 채널 안내를 참고해 주세요.';
-  const LIMITS     = { '앱스토어': 5970, '구글플레이': 350 };
+  // ── 언어별 고정 멘트 ───────────────────────────────────────
+  const MSGS = {
+    ko: {
+      openTpl:    '안녕하세요, {닉네임}님! 커넥팅입니다! 우선 소중한 리뷰 남겨주셔서 진심으로 감사드립니다.',
+      closeGood:  '오늘도 행복한 하루 보내시기 바랍니다😊 커넥팅 드림',
+      closeBad:   '감사합니다. 커넥팅 드림',
+      inquiry:    '이용 중 궁금 사항이 생기시면 앱 내 문의 채널 안내를 참고해 주세요.',
+      defaultNick:'000',
+      langLabel:  '한국어'
+    },
+    ja: {
+      openTpl:    'こんにちは、{닉네임}様！コネクティングです！',
+      closeGood:  '今日も素敵な一日をお過ごしください✨コネクティング運営チーム',
+      closeBad:   'ありがとうございます。コネクティング運営チーム',
+      inquiry:    'ご不明な点がございましたら、アプリ内のお問い合わせよりご連絡ください。',
+      defaultNick:'0000',
+      langLabel:  '日本語'
+    },
+    en: {
+      openTpl:    'Hi, {닉네임}! This is Connecting.',
+      closeGood:  'Thanks again and hope you have a wonderful day! Best regards, Connecting.',
+      closeBad:   'Thanks again for sharing your thoughts. Best regards, Connecting.',
+      inquiry:    'If you have any questions, please feel free to reach out through the in-app support channel.',
+      defaultNick:'0000',
+      langLabel:  'English'
+    },
+    zh: {
+      openTpl:    '您好，{닉네임}！这里是Connecting！',
+      closeGood:  '感謝您使用 Connecting，祝您度過美好的一天！ Connecting 團隊 敬上。',
+      closeBad:   '感謝您的理解與反饋，祝您順心！Connecting 團隊 敬上。',
+      inquiry:    '如有任何疑問，請透過應用程式內的客服管道與我們聯繫。',
+      defaultNick:'0000',
+      langLabel:  '繁體中文'
+    }
+  };
+
+  const LIMITS = { '앱스토어': 5970, '구글플레이': 350 };
 
   // ── 상태 ───────────────────────────────────────────────────
-  let curPlat  = '앱스토어';
-  let curStar  = 5;
-  let curTone  = '공손하고 전문적인';
+  let curPlat = '앱스토어';
+  let curLang = 'ko';
+  let curStar = 5;
+  let curTone = '공손하고 전문적인';
   let lastFull = '';
 
   window.onload = () => { updatePreview(); };
 
   // ── 헬퍼 ───────────────────────────────────────────────────
   function getOpen() {
-    const nick = document.getElementById('nickname').value.trim() || '000';
-    return OPEN_TPL.replace('{닉네임}', nick);
+    const m = MSGS[curLang];
+    const nick = document.getElementById('nickname').value.trim() || m.defaultNick;
+    return m.openTpl.replace('{닉네임}', nick);
   }
-  function getClose(good) { return good ? CLOSE_GOOD : CLOSE_BAD; }
+  function getClose(good) { return good ? MSGS[curLang].closeGood : MSGS[curLang].closeBad; }
   function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
 
   // ── 미리보기 ───────────────────────────────────────────────
@@ -338,27 +269,31 @@
     tag.className = 'tag ' + (isGood ? 'tag-close' : 'tag-close-bad');
   }
 
-  // ── 선택 ───────────────────────────────────────────────────
+  // ── 선택 핸들러 ────────────────────────────────────────────
   function selPlat(el) {
-    document.querySelectorAll('.plat-btn').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
+    document.querySelectorAll('[data-plat]').forEach(b => b.classList.remove('active-blue'));
+    el.classList.add('active-blue');
     curPlat = el.dataset.plat;
     document.getElementById('limitBadge').textContent = '최대 ' + Number(LIMITS[curPlat]).toLocaleString() + '자';
     renderCharBar();
   }
+  function selLang(el) {
+    document.querySelectorAll('[data-lang]').forEach(b => b.classList.remove('active-purple'));
+    el.classList.add('active-purple');
+    curLang = el.dataset.lang;
+    updatePreview();
+  }
   function selStar(el) {
-    document.querySelectorAll('.star-btn').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
+    document.querySelectorAll('[data-v]').forEach(b => b.classList.remove('active-amber'));
+    el.classList.add('active-amber');
     curStar = parseInt(el.dataset.v);
     updatePreview();
   }
   function selTone(el) {
-    document.querySelectorAll('.tone-btn').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
+    document.querySelectorAll('.tone-btn').forEach(b => b.classList.remove('active-green'));
+    el.classList.add('active-green');
     curTone = el.dataset.tone;
   }
-
-
 
   // ── 글자수 바 ──────────────────────────────────────────────
   function renderCharBar() {
@@ -370,9 +305,9 @@
     const bar   = document.getElementById('barFill');
     numEl.textContent = len.toLocaleString() + '자';
     document.getElementById('charLimitLabel').textContent = '/ 최대 ' + limit.toLocaleString() + '자';
-    if (pct < 80)      { numEl.className='char-num ok';   bar.style.background='var(--green)'; }
-    else if (pct < 100){ numEl.className='char-num warn'; bar.style.background='#EF9F27'; }
-    else               { numEl.className='char-num over'; bar.style.background='var(--red)'; }
+    if (pct < 80)       { numEl.className='char-num ok';   bar.style.background='var(--green)'; }
+    else if (pct < 100) { numEl.className='char-num warn'; bar.style.background='#EF9F27'; }
+    else                { numEl.className='char-num over'; bar.style.background='var(--red)'; }
     bar.style.width = pct + '%';
   }
 
@@ -385,6 +320,7 @@
     });
   }
 
+  // ── 생성 ───────────────────────────────────────────────────
   async function generate() {
     const review = document.getElementById('review').value.trim();
     if (!review) { alert('리뷰 내용을 입력해주세요.'); return; }
@@ -400,13 +336,14 @@
     const isGood    = curStar >= 4;
     const openText  = getOpen();
     const closeText = getClose(isGood);
+    const inquiry   = MSGS[curLang].inquiry;
+    const langLabel = MSGS[curLang].langLabel;
     const limit     = LIMITS[curPlat];
 
     const fixedLen           = openText.length + 2 + 2 + closeText.length;
-    const inquiryLen         = 2 + INQUIRY.length;
+    const inquiryLen         = 2 + inquiry.length;
     const bodyMaxWithInquiry = limit - fixedLen - inquiryLen;
     const bodyTarget         = Math.max(50, bodyMaxWithInquiry);
-
     const starDesc = curStar <= 2 ? '매우 낮은 별점 (불만족)' : curStar === 3 ? '보통 별점 (아쉬움)' : '높은 별점 (만족)';
 
     try {
@@ -425,12 +362,14 @@
             content: `플랫폼: ${curPlat} (전체 답변 글자수 제한 ${limit}자)
 별점: ${curStar}점 (${starDesc})
 답변 톤: ${curTone}
+답변 언어: ${langLabel}
 
 고객 리뷰:
 ${review}
 
 [작성 규칙]
-- 첫 인사("안녕하세요...")와 마무리("커넥팅 드림") 문장은 자동으로 붙으므로 본문에 절대 포함하지 마세요.
+- 반드시 ${langLabel}로만 작성하세요.
+- 첫 인사와 마무리 문장은 자동으로 붙으므로 본문에 절대 포함하지 마세요.
 - 본문은 최대 ${bodyTarget}자 이내로 작성하세요.
 - 별점 1~2점: 불편에 진심으로 사과하고 개선 의지 표현
 - 별점 3점: 이용 감사 + 아쉬운 부분 개선 약속
@@ -448,8 +387,7 @@ ${review}
       const data = await res.json();
       const body = data.content[0].text.trim();
 
-      // 문의 안내 포함 여부 결정
-      const fullWith    = openText + '\n\n' + body + '\n\n' + INQUIRY + '\n\n' + closeText;
+      const fullWith    = openText + '\n\n' + body + '\n\n' + inquiry + '\n\n' + closeText;
       const fullWithout = openText + '\n\n' + body + '\n\n' + closeText;
       const addInquiry  = fullWith.length <= limit;
       lastFull = addInquiry ? fullWith : fullWithout;
@@ -466,12 +404,7 @@ ${review}
           <span class="part-tag part-ai">AI 생성 본문</span>
           <div class="result-text">${esc(body)}</div>
         </div>
-        ${addInquiry ? `
-        <hr class="divider">
-        <div class="result-part">
-          <span class="part-tag part-extra">문의 안내 (여유 글자 있어 자동 추가)</span>
-          <div class="result-text">${esc(INQUIRY)}</div>
-        </div>` : ''}
+        ${addInquiry ? `<hr class="divider"><div class="result-part"><span class="part-tag part-extra">문의 안내 (여유 글자 있어 자동 추가)</span><div class="result-text">${esc(inquiry)}</div></div>` : ''}
         <hr class="divider">
         <div class="result-part">
           <span class="part-tag part-fixed">고정 · 마무리</span>

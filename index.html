@@ -343,7 +343,7 @@
     const fixedLen           = openText.length + 2 + 2 + closeText.length;
     const inquiryLen         = 2 + inquiry.length;
     const bodyMaxWithInquiry = limit - fixedLen - inquiryLen;
-    const bodyTarget         = Math.max(50, bodyMaxWithInquiry);
+    const bodyTarget         = Math.min(Math.max(50, bodyMaxWithInquiry), 200);
     const starDesc = curStar <= 2 ? '매우 낮은 별점 (불만족)' : curStar === 3 ? '보통 별점 (아쉬움)' : '높은 별점 (만족)';
 
     try {
@@ -369,13 +369,15 @@
 ${review}
 
 [작성 규칙]
-- 반드시 ${langLabel}로만 작성하세요. 한국어, 영어 등 다른 언어를 절대 섞지 마세요.
-- 앱 이름 '커넥팅'은 언어에 맞게 표기하세요 (日本語: コネクティング / English: Connecting / 繁體中文: Connecting).
+- 반드시 ${langLabel}로만 작성하세요. 다른 언어를 단 한 글자도 섞지 마세요.
+- 앱 이름 표기: 日本語 → コネクティング / English → Connecting / 繁體中文 → Connecting / 한국어 → 커넥팅
 - 첫 인사와 마무리 문장은 자동으로 붙으므로 본문에 절대 포함하지 마세요.
-- 본문은 최대 ${bodyTarget}자 이내로 작성하세요.
-- 별점 1~2점: 불편에 진심으로 사과하고 개선 의지 표현
-- 별점 3점: 이용 감사 + 아쉬운 부분 개선 약속
-- 별점 4~5점: 따뜻한 감사, 좋은 인연 이어가길 응원
+- 본문은 ${bodyTarget}자 이내로 작성하세요. 간결하고 자연스러운 사람이 쓴 것 같은 문장으로 작성하세요.
+- AI 특유의 격식체, 반복적인 감사 표현, 불필요한 수식어는 피하세요.
+- 오류/버그 불편, 기능 설명이 꼭 필요한 경우에만 상세하게, 그 외엔 짧고 따뜻하게 작성하세요.
+- 별점 1~2점: 불편에 진심으로 사과하고 개선 의지 간결하게 표현
+- 별점 3점: 아쉬운 점 인정 + 개선 약속 간결하게
+- 별점 4~5점: 짧고 따뜻한 감사 인사
 - 본문 텍스트만 출력`
           }]
         })

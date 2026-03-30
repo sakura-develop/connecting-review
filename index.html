@@ -314,11 +314,26 @@
   // ── 복사 ───────────────────────────────────────────────────
   function copyText() {
     const flat = lastFull.replace(/\n+/g, ' ').trim();
-    navigator.clipboard.writeText(flat).then(() => {
-      const btn = document.getElementById('copyBtn');
-      btn.textContent = '복사됨 ✓'; btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = '전체 복사'; btn.classList.remove('copied'); }, 2000);
-    });
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(flat).then(() => showCopied()).catch(() => fallbackCopy(flat));
+    } else {
+      fallbackCopy(flat);
+    }
+  }
+  function fallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showCopied();
+  }
+  function showCopied() {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '복사됨 ✓'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '전체 복사'; btn.classList.remove('copied'); }, 2000);
   }
 
   // ── 생성 ───────────────────────────────────────────────────

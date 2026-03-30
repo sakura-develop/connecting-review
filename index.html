@@ -313,7 +313,8 @@
 
   // ── 복사 ───────────────────────────────────────────────────
   function copyText() {
-    navigator.clipboard.writeText(lastFull).then(() => {
+    const flat = lastFull.replace(/\n+/g, ' ').trim();
+    navigator.clipboard.writeText(flat).then(() => {
       const btn = document.getElementById('copyBtn');
       btn.textContent = '복사됨 ✓'; btn.classList.add('copied');
       setTimeout(() => { btn.textContent = '전체 복사'; btn.classList.remove('copied'); }, 2000);

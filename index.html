@@ -36,33 +36,37 @@
     .subtitle { font-size: 14px; color: var(--text2); }
     .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
     .card-title { font-size: 13px; font-weight: 500; color: var(--text2); margin-bottom: 10px; }
-    .btn-grid-2 { display: flex; gap: 8px; }
-    .btn-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-    .sel-btn { padding: 10px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius); background: var(--bg); color: var(--text2); font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.15s; }
-    .sel-btn.active-blue { border: 1.5px solid var(--blue); color: var(--blue-text); background: var(--blue-bg); }
-    .sel-btn.active-purple { border: 1.5px solid #534AB7; color: var(--purple-text); background: var(--purple-bg); }
-    .sel-btn.active-amber { background: var(--amber-bg); border-color: var(--amber-border); font-weight: 500; }
-    .sel-btn.active-green { border-color: var(--green); color: var(--green-text); background: var(--green-bg); }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .grid5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .sbtn { padding: 10px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius); background: var(--bg); color: var(--text2); font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.15s; }
+    .sbtn.on-blue { border: 1.5px solid var(--blue); color: var(--blue-text); background: var(--blue-bg); }
+    .sbtn.on-purple { border: 1.5px solid #534AB7; color: var(--purple-text); background: var(--purple-bg); }
+    .sbtn.on-amber { background: var(--amber-bg); border-color: var(--amber-border); font-weight: 500; }
+    .sbtn.on-green { border-color: var(--green); color: var(--green-text); background: var(--green-bg); }
     .limit-badge { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 20px; font-size: 12px; background: var(--bg2); color: var(--text2); border: 0.5px solid var(--border); }
-    .nick-input { width: 100%; padding: 9px 12px; font-size: 14px; background: var(--bg); color: var(--text); border: 0.5px solid var(--border2); border-radius: var(--radius); font-family: inherit; }
-    .nick-input:focus { outline: none; border-color: var(--blue); }
-    .fixed-preview { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px 14px; font-size: 13px; color: var(--text2); line-height: 1.8; }
+    .txt-input { width: 100%; padding: 9px 12px; font-size: 14px; background: var(--bg); color: var(--text); border: 0.5px solid var(--border2); border-radius: var(--radius); font-family: inherit; }
+    .txt-input:focus { outline: none; border-color: var(--blue); }
+    .preview-box { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 12px 14px; font-size: 13px; color: var(--text2); line-height: 1.8; }
     .fp-row { display: flex; align-items: flex-start; gap: 8px; }
     .fp-row + .fp-row { margin-top: 8px; }
-    .fp-divider { border: none; border-top: 0.5px dashed var(--border2); margin: 10px 0; }
-    .fp-ai { font-size: 12px; color: var(--text3); font-style: italic; padding: 2px 0; }
+    .fp-div { border: none; border-top: 0.5px dashed var(--border2); margin: 10px 0; }
+    .fp-ai { font-size: 12px; color: var(--text3); font-style: italic; }
     .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
     .tag-open { background: var(--blue-bg); color: var(--blue-text); }
     .tag-close { background: var(--green-bg); color: var(--green-text); }
     .tag-close-bad { background: var(--red-bg); color: var(--red-text); }
-    .tone-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tone-wrap { display: flex; gap: 8px; flex-wrap: wrap; }
     .tone-btn { padding: 7px 14px; border: 0.5px solid var(--border); border-radius: 20px; background: var(--bg); color: var(--text2); font-size: 13px; cursor: pointer; transition: all 0.15s; }
-    .tone-btn.active-green { border-color: var(--green); color: var(--green-text); background: var(--green-bg); }
+    .tone-btn.on-green { border-color: var(--green); color: var(--green-text); background: var(--green-bg); }
     textarea { width: 100%; min-height: 110px; padding: 10px 12px; font-size: 14px; background: var(--bg); color: var(--text); border: 0.5px solid var(--border2); border-radius: var(--radius); resize: vertical; font-family: inherit; line-height: 1.6; }
     textarea:focus { outline: none; border-color: var(--blue); }
-    .gen-btn { width: 100%; padding: 13px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius); font-size: 15px; font-weight: 500; cursor: pointer; transition: opacity 0.15s; margin-top: 0.25rem; }
+    .btn-row { display: flex; gap: 8px; margin-top: 0.25rem; }
+    .gen-btn { flex: 1; padding: 13px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius); font-size: 15px; font-weight: 500; cursor: pointer; transition: opacity 0.15s; }
     .gen-btn:disabled { opacity: 0.35; cursor: not-allowed; }
     .gen-btn:not(:disabled):hover { opacity: 0.85; }
+    .reset-btn { padding: 13px 20px; border: 0.5px solid var(--border2); border-radius: var(--radius); background: var(--bg); color: var(--text2); font-size: 14px; cursor: pointer; white-space: nowrap; }
+    .reset-btn:hover { background: var(--bg2); }
     .result-box { margin-top: 1.25rem; background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
     .result-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
     .result-label { font-size: 13px; font-weight: 500; color: var(--text2); }
@@ -85,10 +89,10 @@
     .divider { border: none; border-top: 0.5px solid var(--border); margin: 10px 0; }
     .error-text { font-size: 13px; color: var(--red); }
     .loading { display: flex; gap: 5px; align-items: center; padding: 4px 0; }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text2); animation: bop 1s ease-in-out infinite; }
-    .dot:nth-child(2) { animation-delay: 0.15s; } .dot:nth-child(3) { animation-delay: 0.3s; }
+    .ldot { width: 7px; height: 7px; border-radius: 50%; background: var(--text2); animation: bop 1s ease-in-out infinite; }
+    .ldot:nth-child(2) { animation-delay: 0.15s; } .ldot:nth-child(3) { animation-delay: 0.3s; }
     @keyframes bop { 0%,100%{ opacity:0.3; transform:translateY(0); } 50%{ opacity:1; transform:translateY(-5px); } }
-    .footer { margin-top: 2rem; font-size: 12px; color: var(--text3); text-align: center; line-height: 1.8; }
+    .footer { margin-top: 2rem; font-size: 12px; color: var(--text3); text-align: center; }
   </style>
 </head>
 <body>
@@ -100,64 +104,59 @@
     <p class="subtitle">앱스토어 · 구글플레이 리뷰 답변을 AI가 작성해드립니다.</p>
   </div>
 
-  <!-- 플랫폼 -->
   <div class="card">
     <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;">
       <span>플랫폼</span>
       <span id="limitBadge" class="limit-badge">최대 5,970자</span>
     </div>
-    <div class="btn-grid-2">
-      <button class="sel-btn active-blue" data-plat="앱스토어" onclick="selPlat(this)">
+    <div class="grid2">
+      <button class="sbtn on-blue" id="platApp" onclick="selPlat('앱스토어')">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         앱스토어
       </button>
-      <button class="sel-btn" data-plat="구글플레이" onclick="selPlat(this)">
+      <button class="sbtn" id="platGp" onclick="selPlat('구글플레이')">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5v-17c0-.83,1-.83,1.5-.5l13,8.5-13,8.5C4,20.33,3,20.33,3,20.5z"/></svg>
         구글플레이
       </button>
     </div>
   </div>
 
-  <!-- 언어 -->
   <div class="card">
     <div class="card-title">답변 언어</div>
-    <div class="btn-grid-4">
-      <button class="sel-btn active-purple" data-lang="ko" onclick="selLang(this)">한국어</button>
-      <button class="sel-btn" data-lang="ja" onclick="selLang(this)">日本語</button>
-      <button class="sel-btn" data-lang="en" onclick="selLang(this)">English</button>
-      <button class="sel-btn" data-lang="zh" onclick="selLang(this)">繁體中文</button>
+    <div class="grid4">
+      <button class="sbtn on-purple" id="langKo" onclick="selLang('ko')">한국어</button>
+      <button class="sbtn" id="langJa" onclick="selLang('ja')">日本語</button>
+      <button class="sbtn" id="langEn" onclick="selLang('en')">English</button>
+      <button class="sbtn" id="langZh" onclick="selLang('zh')">繁體中文</button>
     </div>
   </div>
 
-  <!-- 별점 -->
   <div class="card">
     <div class="card-title">별점</div>
-    <div class="btn-grid-4" style="grid-template-columns:repeat(5,1fr)">
-      <button class="sel-btn" data-v="1" onclick="selStar(this)">★ 1</button>
-      <button class="sel-btn" data-v="2" onclick="selStar(this)">★ 2</button>
-      <button class="sel-btn" data-v="3" onclick="selStar(this)">★ 3</button>
-      <button class="sel-btn" data-v="4" onclick="selStar(this)">★ 4</button>
-      <button class="sel-btn active-amber" data-v="5" onclick="selStar(this)">★ 5</button>
+    <div class="grid5">
+      <button class="sbtn" id="star1" onclick="selStar(1)">★ 1</button>
+      <button class="sbtn" id="star2" onclick="selStar(2)">★ 2</button>
+      <button class="sbtn" id="star3" onclick="selStar(3)">★ 3</button>
+      <button class="sbtn" id="star4" onclick="selStar(4)">★ 4</button>
+      <button class="sbtn on-amber" id="star5" onclick="selStar(5)">★ 5</button>
     </div>
   </div>
 
-  <!-- 닉네임 -->
   <div class="card">
     <div class="card-title">리뷰어 닉네임 <span style="font-weight:400;color:var(--text3);margin-left:4px">(비워두면 기본값으로 표시)</span></div>
-    <input class="nick-input" type="text" id="nickname" placeholder="예: 사과맛젤리" oninput="updatePreview()" />
+    <input class="txt-input" type="text" id="nickname" placeholder="예: 사과맛젤리" oninput="updatePreview()" />
   </div>
 
-  <!-- 고정 멘트 미리보기 -->
   <div class="card">
     <div class="card-title">고정 멘트 미리보기</div>
-    <div class="fixed-preview">
+    <div class="preview-box">
       <div class="fp-row">
         <span class="tag tag-open">첫 인사</span>
         <span id="previewOpen"></span>
       </div>
-      <hr class="fp-divider">
+      <hr class="fp-div">
       <div class="fp-ai">… AI가 생성한 본문 …</div>
-      <hr class="fp-divider">
+      <hr class="fp-div">
       <div class="fp-row">
         <span class="tag" id="previewCloseTag">마무리</span>
         <span id="previewClose"></span>
@@ -165,33 +164,30 @@
     </div>
   </div>
 
-  <!-- 답변 톤 -->
   <div class="card">
     <div class="card-title">답변 톤</div>
-    <div class="tone-btns">
-      <button class="tone-btn active-green" data-tone="공손하고 전문적인" onclick="selTone(this)">공손·전문적</button>
-      <button class="tone-btn" data-tone="친근하고 따뜻한" onclick="selTone(this)">친근·따뜻</button>
-      <button class="tone-btn" data-tone="간결하고 명확한" onclick="selTone(this)">간결·명확</button>
-      <button class="tone-btn" data-tone="진심으로 공감하는" onclick="selTone(this)">공감·사과</button>
+    <div class="tone-wrap">
+      <button class="tone-btn on-green" id="tone0" onclick="selTone(this,'공손하고 전문적인')">공손·전문적</button>
+      <button class="tone-btn" id="tone1" onclick="selTone(this,'친근하고 따뜻한')">친근·따뜻</button>
+      <button class="tone-btn" id="tone2" onclick="selTone(this,'간결하고 명확한')">간결·명확</button>
+      <button class="tone-btn" id="tone3" onclick="selTone(this,'진심으로 공감하는')">공감·사과</button>
     </div>
   </div>
 
-  <!-- 리뷰 입력 -->
   <div class="card">
     <div id="reviewTitleWrap" style="display:none;margin-bottom:12px">
       <div class="card-title" style="margin-bottom:6px">리뷰 제목 <span style="font-weight:400;color:var(--text3);margin-left:4px">(선택)</span></div>
-      <input class="nick-input" type="text" id="reviewTitle" placeholder="예: 너무 좋아요!" />
+      <input class="txt-input" type="text" id="reviewTitle" placeholder="예: 너무 좋아요!" />
     </div>
     <div class="card-title">고객 리뷰 내용</div>
     <textarea id="review" placeholder="고객이 남긴 리뷰를 여기에 붙여넣으세요..."></textarea>
   </div>
 
-  <div style="display:flex;gap:8px">
-    <button class="gen-btn" id="genBtn" onclick="generate()" style="flex:1">답변 생성</button>
-    <button onclick="resetAll()" style="padding:13px 20px;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text2);font-size:14px;cursor:pointer;white-space:nowrap">초기화</button>
+  <div class="btn-row">
+    <button class="gen-btn" id="genBtn" onclick="generate()">답변 생성</button>
+    <button class="reset-btn" onclick="resetAll()">초기화</button>
   </div>
 
-  <!-- 결과 -->
   <div class="result-box" id="resultBox" style="display:none">
     <div class="result-header">
       <span class="result-label">생성된 답변</span>
@@ -211,115 +207,69 @@
 </div>
 
 <script>
-  // ── 언어별 고정 멘트 ───────────────────────────────────────
-  const MSGS = {
-    ko: {
-      openTpl:    '안녕하세요, {닉네임}님! 커넥팅입니다! 우선 소중한 리뷰 남겨주셔서 진심으로 감사드립니다.',
-      closeGood:  '오늘도 행복한 하루 보내시기 바랍니다😊 커넥팅 드림',
-      closeBad:   '감사합니다. 커넥팅 드림',
-      inquiry:    '이용 중 궁금 사항이 생기시면 앱 내 문의 채널 안내를 참고해 주세요.',
-      defaultNick:'000',
-      langLabel:  '한국어'
-    },
-    ja: {
-      openTpl:    'こんにちは、{닉네임}様！コネクティングです！',
-      closeGood:  '今日も素敵な一日をお過ごしください✨コネクティング運営チーム',
-      closeBad:   'ありがとうございます。コネクティング運営チーム',
-      inquiry:    'ご不明な点がございましたら、アプリ内のお問い合わせよりご連絡ください。',
-      defaultNick:'0000',
-      langLabel:  '日本語'
-    },
-    en: {
-      openTpl:    'Hi, {닉네임}! This is Connecting.',
-      closeGood:  'Thanks again and hope you have a wonderful day! Best regards, Connecting.',
-      closeBad:   'Thanks again for sharing your thoughts. Best regards, Connecting.',
-      inquiry:    'If you have any questions, please feel free to reach out through the in-app support channel.',
-      defaultNick:'0000',
-      langLabel:  'English'
-    },
-    zh: {
-      openTpl:    '您好，{닉네임}！这里是Connecting！',
-      closeGood:  '感謝您使用 Connecting，祝您度過美好的一天！ Connecting 團隊 敬上。',
-      closeBad:   '感謝您的理解與反饋，祝您順心！Connecting 團隊 敬上。',
-      inquiry:    '如有任何疑問，請透過應用程式內的客服管道與我們聯繫。',
-      defaultNick:'0000',
-      langLabel:  '繁體中文'
-    }
+  var MSGS = {
+    ko: { openTpl:'안녕하세요, {N}님! 커넥팅입니다! 우선 소중한 리뷰 남겨주셔서 진심으로 감사드립니다.', closeGood:'오늘도 행복한 하루 보내시기 바랍니다😊 커넥팅 드림', closeBad:'감사합니다. 커넥팅 드림', inquiry:'이용 중 궁금 사항이 생기시면 앱 내 문의 채널 안내를 참고해 주세요.', def:'000', label:'한국어' },
+    ja: { openTpl:'こんにちは、{N}様！コネクティングです！', closeGood:'今日も素敵な一日をお過ごしください✨コネクティング運営チーム', closeBad:'ありがとうございます。コネクティング運営チーム', inquiry:'ご不明な点がございましたら、アプリ内のお問い合わせよりご連絡ください。', def:'0000', label:'日本語' },
+    en: { openTpl:'Hi, {N}! This is Connecting.', closeGood:'Thanks again and hope you have a wonderful day! Best regards, Connecting.', closeBad:'Thanks again for sharing your thoughts. Best regards, Connecting.', inquiry:'If you have any questions, please feel free to reach out through the in-app support channel.', def:'0000', label:'English' },
+    zh: { openTpl:'您好，{N}！这里是Connecting！', closeGood:'感謝您使用 Connecting，祝您度過美好的一天！ Connecting 團隊 敬上。', closeBad:'感謝您的理解與反饋，祝您順心！Connecting 團隊 敬上。', inquiry:'如有任何疑問，請透過應用程式內的客服管道與我們聯繫。', def:'0000', label:'繁體中文' }
   };
+  var LIMITS = { '앱스토어':5970, '구글플레이':350 };
 
-  const LIMITS = { '앱스토어': 5970, '구글플레이': 350 };
+  var curPlat = '앱스토어';
+  var curLang = 'ko';
+  var curStar = 5;
+  var curTone = '공손하고 전문적인';
+  var lastFull = '';
 
-  // ── 상태 ───────────────────────────────────────────────────
-  let curPlat = '앱스토어';
-  let curLang = 'ko';
-  let curStar = 5;
-  let curTone = '공손하고 전문적인';
-  let lastFull = '';
+  window.onload = function() { updatePreview(); };
 
-  window.onload = () => { updatePreview(); };
-
-  // ── 헬퍼 ───────────────────────────────────────────────────
   function getOpen() {
-    const m = MSGS[curLang];
-    const nick = document.getElementById('nickname').value.trim() || m.defaultNick;
-    return m.openTpl.replace('{닉네임}', nick);
+    var m = MSGS[curLang];
+    var nick = document.getElementById('nickname').value.trim() || m.def;
+    return m.openTpl.replace('{N}', nick);
   }
   function getClose(good) { return good ? MSGS[curLang].closeGood : MSGS[curLang].closeBad; }
   function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
 
-  // ── 미리보기 ───────────────────────────────────────────────
   function updatePreview() {
-    const isGood = curStar >= 4;
-    document.getElementById('previewOpen').textContent  = getOpen();
+    var isGood = curStar >= 4;
+    document.getElementById('previewOpen').textContent = getOpen();
     document.getElementById('previewClose').textContent = getClose(isGood);
-    const tag = document.getElementById('previewCloseTag');
+    var tag = document.getElementById('previewCloseTag');
     tag.className = 'tag ' + (isGood ? 'tag-close' : 'tag-close-bad');
   }
 
-  // ── 선택 핸들러 ────────────────────────────────────────────
-  function selPlat(el) {
-    document.querySelectorAll('[data-plat]').forEach(b => b.classList.remove('active-blue'));
-    el.classList.add('active-blue');
-    curPlat = el.dataset.plat;
-    document.getElementById('limitBadge').textContent = '최대 ' + Number(LIMITS[curPlat]).toLocaleString() + '자';
-    document.getElementById('reviewTitleWrap').style.display = curPlat === '앱스토어' ? 'block' : 'none';
+  function selPlat(p) {
+    curPlat = p;
+    document.getElementById('platApp').className = 'sbtn' + (p === '앱스토어' ? ' on-blue' : '');
+    document.getElementById('platGp').className  = 'sbtn' + (p === '구글플레이' ? ' on-blue' : '');
+    document.getElementById('limitBadge').textContent = '최대 ' + LIMITS[p].toLocaleString() + '자';
+    document.getElementById('reviewTitleWrap').style.display = p === '앱스토어' ? 'block' : 'none';
     renderCharBar();
   }
-  function selLang(el) {
-    document.querySelectorAll('[data-lang]').forEach(b => b.classList.remove('active-purple'));
-    el.classList.add('active-purple');
-    curLang = el.dataset.lang;
+
+  function selLang(l) {
+    curLang = l;
+    ['ko','ja','en','zh'].forEach(function(k) {
+      document.getElementById('lang'+k.charAt(0).toUpperCase()+k.slice(1)).className = 'sbtn' + (k === l ? ' on-purple' : '');
+    });
     updatePreview();
   }
-  function selStar(el) {
-    document.querySelectorAll('[data-v]').forEach(b => b.classList.remove('active-amber'));
-    el.classList.add('active-amber');
-    curStar = parseInt(el.dataset.v);
+
+  function selStar(v) {
+    curStar = v;
+    [1,2,3,4,5].forEach(function(n) {
+      document.getElementById('star'+n).className = 'sbtn' + (n === v ? ' on-amber' : '');
+    });
     updatePreview();
   }
-  function selTone(el) {
-    document.querySelectorAll('.tone-btn').forEach(b => b.classList.remove('active-green'));
-    el.classList.add('active-green');
-    curTone = el.dataset.tone;
+
+  function selTone(el, t) {
+    curTone = t;
+    document.querySelectorAll('.tone-btn').forEach(function(b) { b.className = 'tone-btn'; });
+    el.className = 'tone-btn on-green';
   }
 
-  // ── 글자수 바 ──────────────────────────────────────────────
-  function renderCharBar() {
-    if (!lastFull) return;
-    const limit = LIMITS[curPlat];
-    const len   = lastFull.length;
-    const pct   = Math.min(Math.round(len / limit * 100), 100);
-    const numEl = document.getElementById('charNum');
-    const bar   = document.getElementById('barFill');
-    numEl.textContent = len.toLocaleString() + '자';
-    document.getElementById('charLimitLabel').textContent = '/ 최대 ' + limit.toLocaleString() + '자';
-    if (pct < 80)       { numEl.className='char-num ok';   bar.style.background='var(--green)'; }
-    else if (pct < 100) { numEl.className='char-num warn'; bar.style.background='#EF9F27'; }
-    else                { numEl.className='char-num over'; bar.style.background='var(--red)'; }
-    bar.style.width = pct + '%';
-  }
-
-  // ── 초기화 ───────────────────────────────────────────────────
   function resetAll() {
     document.getElementById('review').value = '';
     document.getElementById('reviewTitle').value = '';
@@ -327,23 +277,35 @@
     document.getElementById('resultBox').style.display = 'none';
     document.getElementById('resultContent').innerHTML = '';
     lastFull = '';
-    curStar = 5;
-    document.querySelectorAll('[data-v]').forEach(b => b.classList.remove('active-amber'));
-    document.querySelector('[data-v="5"]').classList.add('active-amber');
+    selStar(5);
     updatePreview();
   }
 
-  // ── 복사 ───────────────────────────────────────────────────
+  function renderCharBar() {
+    if (!lastFull) return;
+    var limit = LIMITS[curPlat];
+    var len = lastFull.length;
+    var pct = Math.min(Math.round(len / limit * 100), 100);
+    var numEl = document.getElementById('charNum');
+    var bar = document.getElementById('barFill');
+    numEl.textContent = len.toLocaleString() + '자';
+    document.getElementById('charLimitLabel').textContent = '/ 최대 ' + limit.toLocaleString() + '자';
+    if (pct < 80) { numEl.className='char-num ok'; bar.style.background='var(--green)'; }
+    else if (pct < 100) { numEl.className='char-num warn'; bar.style.background='#EF9F27'; }
+    else { numEl.className='char-num over'; bar.style.background='var(--red)'; }
+    bar.style.width = pct + '%';
+  }
+
   function copyText() {
-    const flat = lastFull.replace(/\n+/g, ' ').trim();
+    var flat = lastFull.replace(/\n+/g, ' ').trim();
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(flat).then(() => showCopied()).catch(() => fallbackCopy(flat));
+      navigator.clipboard.writeText(flat).then(showCopied).catch(function() { fallbackCopy(flat); });
     } else {
       fallbackCopy(flat);
     }
   }
   function fallbackCopy(text) {
-    const ta = document.createElement('textarea');
+    var ta = document.createElement('textarea');
     ta.value = text;
     ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
     document.body.appendChild(ta);
@@ -353,112 +315,69 @@
     showCopied();
   }
   function showCopied() {
-    const btn = document.getElementById('copyBtn');
+    var btn = document.getElementById('copyBtn');
     btn.textContent = '복사됨 ✓'; btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = '전체 복사'; btn.classList.remove('copied'); }, 2000);
+    setTimeout(function() { btn.textContent = '전체 복사'; btn.classList.remove('copied'); }, 2000);
   }
 
-  // ── 생성 ───────────────────────────────────────────────────
-  async function generate() {
-    const review = document.getElementById('review').value.trim();
-    const reviewTitle = document.getElementById('reviewTitle').value.trim();
+  function generate() {
+    var review = document.getElementById('review').value.trim();
+    var reviewTitle = document.getElementById('reviewTitle').value.trim();
     if (!review) { alert('리뷰 내용을 입력해주세요.'); return; }
 
-    const btn = document.getElementById('genBtn');
+    var btn = document.getElementById('genBtn');
     btn.disabled = true; btn.textContent = '생성 중...';
 
-    const box     = document.getElementById('resultBox');
-    const content = document.getElementById('resultContent');
+    var box = document.getElementById('resultBox');
+    var content = document.getElementById('resultContent');
     box.style.display = 'block'; lastFull = '';
-    content.innerHTML = '<div class="loading"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+    content.innerHTML = '<div class="loading"><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div></div>';
 
-    const isGood    = curStar >= 4;
-    const openText  = getOpen();
-    const closeText = getClose(isGood);
-    const inquiry   = MSGS[curLang].inquiry;
-    const langLabel = MSGS[curLang].langLabel;
-    const limit     = LIMITS[curPlat];
+    var isGood = curStar >= 4;
+    var openText = getOpen();
+    var closeText = getClose(isGood);
+    var inquiry = MSGS[curLang].inquiry;
+    var langLabel = MSGS[curLang].label;
+    var limit = LIMITS[curPlat];
+    var fixedLen = openText.length + 2 + 2 + closeText.length;
+    var bodyTarget = Math.min(Math.max(50, limit - fixedLen - 2 - inquiry.length), 200);
+    var starDesc = curStar <= 2 ? '매우 낮은 별점 (불만족)' : curStar === 3 ? '보통 별점 (아쉬움)' : '높은 별점 (만족)';
+    var reviewContent = reviewTitle ? '제목: ' + reviewTitle + '\n내용: ' + review : review;
 
-    const fixedLen           = openText.length + 2 + 2 + closeText.length;
-    const inquiryLen         = 2 + inquiry.length;
-    const bodyMaxWithInquiry = limit - fixedLen - inquiryLen;
-    const bodyTarget         = Math.min(Math.max(50, bodyMaxWithInquiry), 200);
-    const starDesc = curStar <= 2 ? '매우 낮은 별점 (불만족)' : curStar === 3 ? '보통 별점 (아쉬움)' : '높은 별점 (만족)';
-
-    try {
-      const res = await fetch('/api/reply', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 800,
-          system: `당신은 소셜 데이팅 앱 '커넥팅'의 고객 응대 담당자입니다.
-리뷰 답변의 본문 내용만 작성하세요.
-첫 인사와 마지막 마무리 문장은 이미 별도로 고정되어 있으므로 절대 포함하지 마세요.
-설명, 부연, 따옴표 없이 본문 텍스트만 반환하세요.
-지정된 언어 외의 다른 언어를 절대 섞어 쓰지 마세요. 단 한 글자도 다른 언어가 포함되어서는 안 됩니다.`,
-          messages: [{
-            role: 'user',
-            content: `플랫폼: ${curPlat} (전체 답변 글자수 제한 ${limit}자)
-별점: ${curStar}점 (${starDesc})
-답변 톤: ${curTone}
-답변 언어: ${langLabel}
-
-고객 리뷰:${reviewTitle ? '\n제목: ' + reviewTitle + '\n' : '\n'}${review}
-
-[작성 규칙]
-- 반드시 ${langLabel}로만 작성하세요. 다른 언어를 단 한 글자도 섞지 마세요.
-- 앱 이름 표기: 日本語 → コネクティング / English → Connecting / 繁體中文 → Connecting / 한국어 → 커넥팅
-- 첫 인사와 마무리 문장은 자동으로 붙으므로 본문에 절대 포함하지 마세요.
-- 본문은 ${bodyTarget}자 이내로 작성하세요. 간결하고 자연스러운 사람이 쓴 것 같은 문장으로 작성하세요.
-- AI 특유의 격식체, 반복적인 감사 표현, 불필요한 수식어는 피하세요.
-- 오류/버그 불편, 기능 설명이 꼭 필요한 경우에만 상세하게, 그 외엔 짧고 따뜻하게 작성하세요.
-- 별점 1~2점: 불편에 진심으로 사과하고 개선 의지 간결하게 표현. 이모지 사용 안 함.
-- 별점 3점: 아쉬운 점 인정 + 개선 약속 간결하게. 이모지 1개 이하.
-- 별점 4~5점: 짧고 따뜻한 감사 인사. 이모지 1~2개 자연스럽게 포함.
-- 이모지는 문장 흐름에 자연스럽게 녹아들게 사용하고, 나열하거나 과하게 쓰지 마세요.
-- 본문 텍스트만 출력`
-          }]
-        })
-      });
-
-      if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.error?.message || '오류 코드: ' + res.status);
-      }
-
-      const data = await res.json();
-      const body = data.content[0].text.trim();
-
-      const fullWith    = openText + '\n\n' + body + '\n\n' + inquiry + '\n\n' + closeText;
-      const fullWithout = openText + '\n\n' + body + '\n\n' + closeText;
-      const addInquiry  = fullWith.length <= limit;
+    fetch('/api/reply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 800,
+        system: '당신은 소셜 데이팅 앱 \'커넥팅\'의 고객 응대 담당자입니다. 리뷰 답변의 본문 내용만 작성하세요. 첫 인사와 마지막 마무리 문장은 이미 별도로 고정되어 있으므로 절대 포함하지 마세요. 설명, 부연, 따옴표 없이 본문 텍스트만 반환하세요. 지정된 언어 외의 다른 언어를 절대 섞어 쓰지 마세요. 단 한 글자도 다른 언어가 포함되어서는 안 됩니다.',
+        messages: [{
+          role: 'user',
+          content: '플랫폼: ' + curPlat + ' (전체 답변 글자수 제한 ' + limit + '자)\n별점: ' + curStar + '점 (' + starDesc + ')\n답변 톤: ' + curTone + '\n답변 언어: ' + langLabel + '\n\n고객 리뷰:\n' + reviewContent + '\n\n[작성 규칙]\n- 반드시 ' + langLabel + '로만 작성하세요. 다른 언어를 단 한 글자도 섞지 마세요.\n- 앱 이름 표기: 日本語 → コネクティング / English → Connecting / 繁體中文 → Connecting / 한국어 → 커넥팅\n- 첫 인사와 마무리 문장은 자동으로 붙으므로 본문에 절대 포함하지 마세요.\n- 본문은 ' + bodyTarget + '자 이내로 작성하세요. 간결하고 자연스러운 사람이 쓴 것 같은 문장으로 작성하세요.\n- AI 특유의 격식체, 반복적인 감사 표현, 불필요한 수식어는 피하세요.\n- 오류/버그 불편, 기능 설명이 꼭 필요한 경우에만 상세하게, 그 외엔 짧고 따뜻하게 작성하세요.\n- 별점 1~2점: 불편에 진심으로 사과하고 개선 의지 간결하게 표현. 이모지 사용 안 함.\n- 별점 3점: 아쉬운 점 인정 + 개선 약속 간결하게. 이모지 1개 이하.\n- 별점 4~5점: 짧고 따뜻한 감사 인사. 이모지 1~2개 자연스럽게 포함.\n- 이모지는 문장 흐름에 자연스럽게 녹아들게 사용하고, 나열하거나 과하게 쓰지 마세요.\n- 본문 텍스트만 출력'
+        }]
+      })
+    }).then(function(res) {
+      return res.json().then(function(data) { return { ok: res.ok, data: data }; });
+    }).then(function(r) {
+      if (!r.ok) throw new Error(r.data.error ? r.data.error.message : '오류 코드: ' + r.status);
+      var body = r.data.content[0].text.trim();
+      var fullWith    = openText + '\n\n' + body + '\n\n' + inquiry + '\n\n' + closeText;
+      var fullWithout = openText + '\n\n' + body + '\n\n' + closeText;
+      var addInquiry  = fullWith.length <= limit;
       lastFull = addInquiry ? fullWith : fullWithout;
-
       renderCharBar();
-
-      content.innerHTML = `
-        <div class="result-part">
-          <span class="part-tag part-fixed">고정 · 첫 인사</span>
-          <div class="result-text">${esc(openText)}</div>
-        </div>
-        <hr class="divider">
-        <div class="result-part">
-          <span class="part-tag part-ai">AI 생성 본문</span>
-          <div class="result-text">${esc(body)}</div>
-        </div>
-        ${addInquiry ? `<hr class="divider"><div class="result-part"><span class="part-tag part-extra">문의 안내 (여유 글자 있어 자동 추가)</span><div class="result-text">${esc(inquiry)}</div></div>` : ''}
-        <hr class="divider">
-        <div class="result-part">
-          <span class="part-tag part-fixed">고정 · 마무리</span>
-          <div class="result-text">${esc(closeText)}</div>
-        </div>`;
-
-    } catch(e) {
+      content.innerHTML =
+        '<div class="result-part"><span class="part-tag part-fixed">고정 · 첫 인사</span><div class="result-text">' + esc(openText) + '</div></div>' +
+        '<hr class="divider">' +
+        '<div class="result-part"><span class="part-tag part-ai">AI 생성 본문</span><div class="result-text">' + esc(body) + '</div></div>' +
+        (addInquiry ? '<hr class="divider"><div class="result-part"><span class="part-tag part-extra">문의 안내 (여유 글자 있어 자동 추가)</span><div class="result-text">' + esc(inquiry) + '</div></div>' : '') +
+        '<hr class="divider">' +
+        '<div class="result-part"><span class="part-tag part-fixed">고정 · 마무리</span><div class="result-text">' + esc(closeText) + '</div></div>';
+      btn.disabled = false; btn.textContent = '답변 생성';
+    }).catch(function(e) {
       content.innerHTML = '<div class="error-text">오류: ' + e.message + '</div>';
-    }
-
-    btn.disabled = false; btn.textContent = '답변 생성';
+      btn.disabled = false; btn.textContent = '답변 생성';
+    });
   }
 </script>
 </body>

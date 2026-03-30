@@ -178,11 +178,18 @@
 
   <!-- 리뷰 입력 -->
   <div class="card">
+    <div id="reviewTitleWrap" style="display:none;margin-bottom:12px">
+      <div class="card-title" style="margin-bottom:6px">리뷰 제목 <span style="font-weight:400;color:var(--text3);margin-left:4px">(선택)</span></div>
+      <input class="nick-input" type="text" id="reviewTitle" placeholder="예: 너무 좋아요!" />
+    </div>
     <div class="card-title">고객 리뷰 내용</div>
     <textarea id="review" placeholder="고객이 남긴 리뷰를 여기에 붙여넣으세요..."></textarea>
   </div>
 
-  <button class="gen-btn" id="genBtn" onclick="generate()">답변 생성</button>
+  <div style="display:flex;gap:8px">
+    <button class="gen-btn" id="genBtn" onclick="generate()" style="flex:1">답변 생성</button>
+    <button onclick="resetAll()" style="padding:13px 20px;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text2);font-size:14px;cursor:pointer;white-space:nowrap">초기화</button>
+  </div>
 
   <!-- 결과 -->
   <div class="result-box" id="resultBox" style="display:none">
@@ -275,6 +282,7 @@
     el.classList.add('active-blue');
     curPlat = el.dataset.plat;
     document.getElementById('limitBadge').textContent = '최대 ' + Number(LIMITS[curPlat]).toLocaleString() + '자';
+    document.getElementById('reviewTitleWrap').style.display = curPlat === '앱스토어' ? 'block' : 'none';
     renderCharBar();
   }
   function selLang(el) {
@@ -311,6 +319,20 @@
     bar.style.width = pct + '%';
   }
 
+  // ── 초기화 ───────────────────────────────────────────────────
+  function resetAll() {
+    document.getElementById('review').value = '';
+    document.getElementById('reviewTitle').value = '';
+    document.getElementById('nickname').value = '';
+    document.getElementById('resultBox').style.display = 'none';
+    document.getElementById('resultContent').innerHTML = '';
+    lastFull = '';
+    curStar = 5;
+    document.querySelectorAll('[data-v]').forEach(b => b.classList.remove('active-amber'));
+    document.querySelector('[data-v="5"]').classList.add('active-amber');
+    updatePreview();
+  }
+
   // ── 복사 ───────────────────────────────────────────────────
   function copyText() {
     const flat = lastFull.replace(/\n+/g, ' ').trim();
@@ -339,6 +361,7 @@
   // ── 생성 ───────────────────────────────────────────────────
   async function generate() {
     const review = document.getElementById('review').value.trim();
+    const reviewTitle = document.getElementById('reviewTitle').value.trim();
     if (!review) { alert('리뷰 내용을 입력해주세요.'); return; }
 
     const btn = document.getElementById('genBtn');
@@ -381,7 +404,8 @@
 답변 톤: ${curTone}
 답변 언어: ${langLabel}
 
-고객 리뷰:
+고객 리뷰:${reviewTitle ? '
+제목: ' + reviewTitle : ''}
 ${review}
 
 [작성 규칙]
